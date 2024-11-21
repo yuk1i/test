@@ -19,5 +19,5 @@ int call(int arg0, int arg1) {
         arg1 += 1919810;
     }
     arg0 += arg1;
-    return arg0 + 114514;
+    return arg1 + 114514;
 }
