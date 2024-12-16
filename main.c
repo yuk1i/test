@@ -16,8 +16,8 @@ int main() {
 
 int call(int arg0, int arg1) {
     if (arg0 < 999) {
-        arg1 += 1919810;
+        arg1 = 1919810;
     }
-    arg0 += arg1;
+    arg0 = arg1;
     return arg1 + 114514;
 }
