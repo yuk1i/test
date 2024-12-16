@@ -11,13 +11,15 @@ int main() {
         d = -d;
     }
     d = d + 1;
+    d = call(99999, c);
     return 0;
 }
 
 int call(int arg0, int arg1) {
+    int q = 0;
     if (arg0 < 999) {
-        arg1 = 1919810;
+        q = 8 + arg1;
     }
     arg0 = arg1;
-    return arg1 + 114514;
+    return q + 114514;
 }
