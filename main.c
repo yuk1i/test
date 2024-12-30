@@ -1,25 +1,54 @@
-int call(int arg0, int arg1);
+#include <stdio.h>
+#include <stdlib.h>
 
-int main() {
-    int b = 0;
-    int c = b+1;
-    c = c + 9;
-    b = c + 10;
-    int a = call(b,c);
-    int d = a;
-    if (d > 0) {
-        d = -d;
+void test_memory_operations(int path) {
+    char *buffer1 = (char *)malloc(64);  // Allocate 64 bytes
+    char *buffer2 = (char *)malloc(128); // Allocate 128 bytes
+
+    if (!buffer1 || !buffer2) {
+        printf("Memory allocation failed\n");
+        return;
     }
-    d = d + 1;
-    d = call(99999, c);
-    return 0;
+
+    printf("Memory allocated\n");
+
+    if (path == 1) { // NORMAL_PATH
+        free(buffer1);
+        free(buffer2);
+        printf("Memory freed normally\n");
+    } else if (path == 2) { // DOUBLE_FREE_PATH
+        free(buffer1);
+        free(buffer1); // Double-free error
+        free(buffer2);
+        printf("Double-free triggered\n");
+    } else if (path == 3) { // USE_AFTER_FREE_PATH
+        free(buffer1);
+        buffer1[0] = 'A'; // Use-after-free error
+        free(buffer2);
+        printf("Use-after-free triggered\n");
+    } else if (path == 4) { // MALLOC_LEAK_PATH
+        free(buffer1);
+        // buffer2 is intentionally not freed, causing a memory leak
+        printf("Malloc leak triggered\n");
+    } else {
+        printf("Unknown path\n");
+        free(buffer1);
+        free(buffer2);
+    }
 }
 
-int call(int arg0, int arg1) {
-    int q = 0;
-    if (arg0 < 999) {
-        q = 8 + arg1;
-    }
-    arg0 = arg1;
-    return q + 114514;
+int main() {
+    printf("Testing NORMAL_PATH:\n");
+    test_memory_operations(1);
+
+    printf("\nTesting DOUBLE_FREE_PATH:\n");
+    test_memory_operations(2);
+
+    printf("\nTesting USE_AFTER_FREE_PATH:\n");
+    test_memory_operations(3);
+
+    printf("\nTesting MALLOC_LEAK_PATH:\n");
+    test_memory_operations(4);
+
+    return 0;
 }
