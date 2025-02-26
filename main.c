@@ -18,5 +18,6 @@ int main() {
     MyClass* myObj = new MyClass(42); // 创建对象
     useObject(myObj);                // 使用对象
     deleteObject(myObj);             // 删除对象，释放内存
+    useObject(myObj);                // 使用对象2
     return 0;
 }
