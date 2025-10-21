@@ -1,4 +1,10 @@
 int test1(int i) {
+    int *qwq, a, asd[123];
+    struct {
+        int a;
+        long b;
+        void* p;
+    } q;
     int b = 1;
     int *p;
     p = &b;
