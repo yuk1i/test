@@ -5,13 +5,15 @@ class Test {
     virtual ~Test() = default;
 }
 
+struct s0 {
+    int a;
+    long b;
+    void* p;
+};
+
 int test1(int i) {
     int *qwq, a, asd[123];
-    struct {
-        int a;
-        long b;
-        void* p;
-    } q;
+    struct s0 q;
 
     q.a = 123;
     q.b = 456;
