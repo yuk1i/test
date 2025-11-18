@@ -12,6 +12,10 @@ int test1(int i) {
         long b;
         void* p;
     } q;
+
+    q.a = 123;
+    q.b = 456;
+    
     int b = 1;
     int *p;
     p = &b;
