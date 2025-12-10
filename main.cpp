@@ -1,27 +1,36 @@
-class Test {
-    int a{};
-    Test* ptr{nullptr};
+class Test2;
 
-    virtual ~Test() = default;
-}
-
-struct s0 {
-    int a;
-    long b;
-    void* p;
+class Test1 {
+public:
+    Test2 *ptr{};
+    int value{};
 };
 
-int test1(int i) {
-    int *qwq, a, asd[123];
-    struct s0 q;
+class Test2 {
+public:
+    int value{3};
+    int* intptr{};
+};
 
-    q.a = 123;
-    q.b = 456;
+void sink(int v) {}
+
+int test1(int i) {
+    int global;
+    Test1 t1;
+    Test1 t2;
     
-    int b = 1;
-    int *p;
-    p = &b;
-    if (i==1)
-        *p = 0;
-    return 3 / b;
+    t2.intptr = &global;
+    
+    if (i == 1) {
+        t1.ptr = &t2;
+        t2.value = 4;
+    } else {
+        t1.ptr = null;
+    }
+
+    if (i == 3) { t1.value = 5; }
+
+    sink(t1.ptr->intptr);
+    sink(t1.value);
+    return 0;
 }
