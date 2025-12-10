@@ -32,5 +32,6 @@ int test1(int i) {
 
     sink(*t1.ptr->intptr);
     sink(t1.value);
+    sink(*t2.intptr);
     return 0;
 }
