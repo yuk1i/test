@@ -17,7 +17,7 @@ void sink(int v) {}
 int test1(int i) {
     int global;
     Test1 t1;
-    Test1 t2;
+    Test2 t2;
     
     t2.intptr = &global;
     
@@ -25,12 +25,12 @@ int test1(int i) {
         t1.ptr = &t2;
         t2.value = 4;
     } else {
-        t1.ptr = null;
+        t1.ptr = nullptr;
     }
 
     if (i == 3) { t1.value = 5; }
 
-    sink(t1.ptr->intptr);
+    sink(*t1.ptr->intptr);
     sink(t1.value);
     return 0;
 }
