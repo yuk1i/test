@@ -33,5 +33,8 @@ int test1(int i) {
     sink(*t1.ptr->intptr);
     sink(t1.value);
     sink(*t2.intptr);
+
+    int* p0 = &global;
+    sink(*p0);
     return 0;
 }
