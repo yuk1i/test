@@ -43,7 +43,7 @@ int test2() {
 
     Bar* pbar4 = &bar4;
     pbar4->foo = nullptr;
-    *(bar3.foo->value);
+    *(bar4.foo->value);
 
     return 0;
 }
