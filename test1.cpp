@@ -5,9 +5,7 @@ public:
     int id;
     double amount;
 };
-
-// 模拟外部随机性
-bool randomChoice(); 
+Transaction* createTxn();
 
 // 【单过程分析目标】
 // 这是一个独立的函数，没有 this 指针
@@ -16,7 +14,7 @@ void processTransaction(int flowControl) {
     // [L1] 初始定义
     // 假设 createTxn() 可能返回 nullptr，也可能返回有效对象
     // 初始状态 Fact: { txn: MaybeNull }
-    Transaction* txn = new Transaction();
+    Transaction* txn = createTxn();
     
     // [L2] 第一次检查 (Constraint)
     if (txn != nullptr) {
@@ -25,7 +23,7 @@ void processTransaction(int flowControl) {
         // 当前 Fact: { txn: NonNull }
         
         // 【绝对安全】分析器确定这里绝不会崩
-        txn->amount += 10.0; 
+        txn->amount = 10; 
         std::cout << "Transaction Validated." << std::endl;
     } 
     // [L4] 分支结束，汇合
