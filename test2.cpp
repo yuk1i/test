@@ -38,5 +38,12 @@ int test2() {
     refBar3.foo = &foo;
     bar3.foo->callMe();
 
+    Bar bar4;
+    bar4.foo = &foo;
+
+    Bar* pbar4 = &bar4;
+    pbar4->foo = nullptr;
+    *(bar3.foo->value);
+
     return 0;
 }
