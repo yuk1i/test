@@ -11,6 +11,8 @@ public:
     int **derived_ptr;
     void run() {
         this->ptr = &value;
+        ptr = nullptr;
+        sink(*this->ptr);
     }
 };
 
