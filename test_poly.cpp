@@ -13,6 +13,12 @@ public:
         ptr = nullptr;
         this->ptr = &value;
         sink(*ptr);
+
+        int v = 123;
+        int *pv = &v;
+        derived_ptr = nullptr;
+        this->derived_ptr = &pv;
+        sink(*derived_ptr == nullptr);
     }
 };
 
