@@ -10,8 +10,8 @@ class Derived : public Base {
 public:
     int **derived_ptr;
     void run() {
-        this->ptr = &value;
-        ptr = nullptr;
+        this->ptr = nullptr;
+        ptr = &value;
         sink(*this->ptr);
     }
 };
