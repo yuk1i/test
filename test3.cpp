@@ -17,10 +17,10 @@ int main() {
   bar.foo = &foo;
   sink(bar.foo->value);
 
-  Bar &refBar = bar;
-  refBar.foo = nullptr;
-  sink(refBar.foo->value);
+  Bar *pBar = &bar;
+  pBar->foo = nullptr;
+  sink(pBar->foo->value);
   
   bar.foo = &foo;
-  sink(refBar.foo->value);
+  sink(pBar->foo->value);
 }
