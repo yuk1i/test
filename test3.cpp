@@ -9,18 +9,17 @@ public:
 };
 int sink(int);
 
-int main() {
-  Foo foo;
-  foo.value = 3;
+Foo* newFoo();
 
+int main() {
   Bar bar;
-  bar.foo = &foo;
+  bar.foo = newFoo();
   sink(bar.foo->value);
 
   Bar *pBar = &bar;
   pBar->foo = nullptr;
   sink(pBar->foo->value);
   
-  bar.foo = &foo;
+  bar.foo = newFoo();
   sink(pBar->foo->value);
 }
