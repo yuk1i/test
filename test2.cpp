@@ -29,14 +29,14 @@ int test2() {
     bar2.foo = nullptr;
     Bar* pbar2 = &bar2;
     pbar2->foo = &foo;
-    bar2.foo->callMe();
+    v = *bar2.foo->value;
 
     Bar bar3;
     bar3.foo = nullptr;
 
     Bar& refBar3 = bar3;
     refBar3.foo = &foo;
-    bar3.foo->callMe();
+    v = *bar3.foo->value;
 
     Foo foo2;
     foo2.value = &v;
